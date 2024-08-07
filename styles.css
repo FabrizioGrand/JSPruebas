@@ -1,7 +1,7 @@
 /* Estilos básicos para el cuerpo */
 body {
     font-family: Arial, sans-serif; /* Fuente para el texto */
-    background-color: #f0f0f0; /* Color de fondo */
+    background-color:blueviolet; /* Color de fondo */
     display: flex; /* Usar flexbox para centrar contenido */
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
@@ -10,15 +10,20 @@ body {
 
 /* Estilos para el contenedor de la calculadora */
 #calculator {
-    background-color: white; /* Fondo blanco */
+    background-color:  pink; /* Fondo del cuadrado */
     padding: 20px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 4rem;
 }
 
 /* Estilos para el encabezado */
 h1 {
     text-align: center; /* Centrar el texto */
+    color: rgba(0, 0, 0, 0.85);
+    padding-right: 10px;
+    background-color: pink;
+    border-radius: 2rem;
 }
 
 /* Estilos para los divs internos */
@@ -42,6 +47,9 @@ button {
     padding: 10px; /* Espaciado interno */
     margin: 5px; /* Espacio alrededor */
     cursor: pointer; /* Cursor de mano */
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold; /* Texto en negrita */
 }
 
 /* Estilos para el div de resultado */
