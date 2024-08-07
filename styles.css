@@ -1,0 +1,52 @@
+/* Estilos básicos para el cuerpo */
+body {
+    font-family: Arial, sans-serif; /* Fuente para el texto */
+    background-color: #f0f0f0; /* Color de fondo */
+    display: flex; /* Usar flexbox para centrar contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    height: 100vh; /* Altura de la ventana */
+}
+
+/* Estilos para el contenedor de la calculadora */
+#calculator {
+    background-color: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos para el encabezado */
+h1 {
+    text-align: center; /* Centrar el texto */
+}
+
+/* Estilos para los divs internos */
+div {
+    margin-bottom: 10px; /* Espacio debajo de cada div */
+}
+
+/* Estilos para las etiquetas */
+label {
+    display: block; /* Mostrar como bloque */
+}
+
+/* Estilos para los campos de entrada */
+input {
+    width: calc(100% - 22px); /* Ancho completo menos el padding */
+    padding: 5px; /* Espaciado interno */
+}
+
+/* Estilos para los botones */
+button {
+    padding: 10px; /* Espaciado interno */
+    margin: 5px; /* Espacio alrededor */
+    cursor: pointer; /* Cursor de mano */
+}
+
+/* Estilos para el div de resultado */
+#result {
+    margin-top: 20px; /* Espacio arriba */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrar el texto */
+}
