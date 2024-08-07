@@ -48,9 +48,34 @@ function calculateVAT() {
     displayResult(`El ${vatRate}% de IVA sobre ${amount} es: ${vatValue}. El valor total con IVA incluido es: ${totalValue}`); // Mostrar el resultado
 }
 
+// Función para calcular el IVA para una lista de precios
+function calculateVATForList() {
+    // Obtener la entrada del usuario y convertirla en un array de números
+    const pricesInput = document.getElementById('prices').value;
+    const pricesArray = pricesInput.split(',').map(price => parseFloat(price.trim()));
+
+    // Obtener el porcentaje de IVA
+    const vatRate = parseFloat(document.getElementById('vatRateList').value);
+
+    // Array para almacenar los resultados
+    let results = [];
+
+    // Iterar sobre cada precio y calcular el IVA
+    pricesArray.forEach(price => {
+        const vatValue = (price * vatRate) / 100;
+        const totalValue = price + vatValue;
+        results.push(`Precio: ${price}, IVA: ${vatValue}, Total: ${totalValue}`);
+    });
+
+    // Mostrar los resultados
+    console.log(results.join('\n'));
+    alert(results.join('\n'));
+    displayResult(results.join('<br>'));
+}
+
 // Función para mostrar los resultados
 function displayResult(message) {
-    resultDiv.innerText = message; // Mostrar el mensaje en el div de resultado
+    resultDiv.innerHTML = message; // Mostrar el mensaje en el div de resultado
     console.log(message); // Mostrar el mensaje en la consola
     alert(message); // Mostrar el mensaje en una alerta
 }
