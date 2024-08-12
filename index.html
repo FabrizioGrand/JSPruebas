@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/JSPruebas/styles.css" />
     <!-- Enlace al archivo de estilos CSS -->
   </head>
   <body>
-    <h1>Calculadora</h1>
+    <div class="Calculadora"><h1>Calculadora</h1></div>
     <div id="calculator">
       <!-- Sección para las operaciones básicas -->
       <div>
@@ -39,12 +39,12 @@
       <!-- Sección para el cálculo del IVA sobre un solo importe -->
       <div>
         <label for="amount">Importe:</label>
-        <input type="number" id="amount" step="any" />
+        <input type="number" id="amount" step="any" placeholder="Ingrese su importe" />
         <!-- step="any" permite números decimales -->
       </div>
       <div>
         <label for="vatRate">IVA (%):</label>
-        <input type="number" id="vatRate" step="any" />
+        <input type="number" id="vatRate" step="any" placeholder="Ingrese El Valor de IVA"/>
         <button onclick="calculateVAT()">Calcular IVA</button>
       </div>
       <!-- Sección para el cálculo del IVA sobre una lista de precios -->
@@ -58,13 +58,13 @@
       </div>
       <div>
         <label for="vatRateList">IVA (%):</label>
-        <input type="number" id="vatRateList" step="any" />
+        <input type="number" id="vatRateList" step="any" placeholder="Ingrese El Valor de IVA" />
         <button onclick="calculateVATForList()">Calcular IVA para lista</button>
       </div>
       <!-- Div para mostrar los resultados -->
       <div id="result"></div>
     </div>
-    <script src="main.js"></script>
+    <script src="/JSPruebas/main.js"></script>
     <!-- Enlace al archivo JavaScript -->
   </body>
 </html>
