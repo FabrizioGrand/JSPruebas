@@ -1,70 +1,80 @@
 /* Estilos básicos para el cuerpo */
 body {
-    font-family: Arial, sans-serif; /* Fuente para el texto */
-    background-color: blueviolet; /* Color de fondo */
-    display: flex; /* Usar flexbox para centrar contenido */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    height: 100vh; /* Altura de la ventana */
-}
-
-/* Estilos para el contenedor de la calculadora */
-#calculator {
-    background-color: pink; /* Fondo del cuadrado */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    margin-top: 4rem;
+    font-family: Arial, sans-serif;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 /* Estilos para el encabezado */
 h1 {
-    text-align: center; /* Centrar el texto */
     color: rgba(0, 0, 0, 0.85);
-    padding-right: 10px;
     background-color: pink;
+    padding: 10px;
     border-radius: 2rem;
+    text-align: center;
 }
 
-/* Estilos para los divs internos */
-div {
-    margin-bottom: 10px; /* Espacio debajo de cada div */
+/* Contenedor principal de las secciones, configurado como flexbox */
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-/* Estilos para las etiquetas */
+/* Estilos para cada sección */
+.section {
+    background-color: pink;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+}
+
+/* Estilos para las etiquetas y campos de entrada */
 label {
-    display: block; /* Mostrar como bloque */
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* Estilos para los campos de entrada */
 input {
-    width: calc(100% - 22px); /* Ancho completo menos el padding */
-    padding: 5px; /* Espaciado interno */
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
 }
 
 /* Estilos para los botones */
 button {
-    padding: 10px; /* Espaciado interno */
-    margin: 5px; /* Espacio alrededor */
-    cursor: pointer; /* Cursor de mano */
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%;
+    cursor: pointer;
     background-color: blueviolet;
     color: white;
-    font-weight: bold; /* Texto en negrita */
+    font-weight: bold;
 }
 
-/* Estilos para el div de resultado */
-#result {
-    margin-top: 20px; /* Espacio arriba */
-    font-weight: bold; /* Texto en negrita */
-    text-align: center; /* Centrar el texto */
+/* Estilos para el contenedor de resultados guardados */
+#savedResultsContainer {
+    background-color: pink;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
 }
 
-/* Estilos para los resultados guardados */
+#savedResultsContainer h2 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.85);
+}
+
 #savedResults {
-    margin-top: 20px; /* Espacio arriba */
-    font-weight: bold; /* Texto en negrita */
-    text-align: left; /* Alinear el texto a la izquierda */
-    padding: 10px;
-    background-color: lightgrey; /* Fondo gris claro */
-    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
 }
