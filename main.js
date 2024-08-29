@@ -11,16 +11,16 @@ function calculate(operation) {
 
     // Determinar la operación a realizar
     switch (operation) {
-        case 'sumar':
+        case 'add':
             result = num1 + num2; // Suma
             break;
-        case 'restar':
+        case 'subtract':
             result = num1 - num2; // Resta
             break;
-        case 'multiplicar':
+        case 'multiply':
             result = num1 * num2; // Multiplicación
             break;
-        case 'dividir':
+        case 'divide':
             result = num1 / num2; // División
             break;
     }
