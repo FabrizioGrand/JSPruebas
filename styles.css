@@ -1,7 +1,7 @@
 /* Estilos básicos para el cuerpo */
 body {
     font-family: Arial, sans-serif; /* Fuente para el texto */
-    background-color:blueviolet; /* Color de fondo */
+    background-color: blueviolet; /* Color de fondo */
     display: flex; /* Usar flexbox para centrar contenido */
     justify-content: center; /* Centrar horizontalmente */
     align-items: center; /* Centrar verticalmente */
@@ -10,7 +10,7 @@ body {
 
 /* Estilos para el contenedor de la calculadora */
 #calculator {
-    background-color:  pink; /* Fondo del cuadrado */
+    background-color: pink; /* Fondo del cuadrado */
     padding: 20px; /* Espaciado interno */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
@@ -57,4 +57,14 @@ button {
     margin-top: 20px; /* Espacio arriba */
     font-weight: bold; /* Texto en negrita */
     text-align: center; /* Centrar el texto */
+}
+
+/* Estilos para los resultados guardados */
+#savedResults {
+    margin-top: 20px; /* Espacio arriba */
+    font-weight: bold; /* Texto en negrita */
+    text-align: left; /* Alinear el texto a la izquierda */
+    padding: 10px;
+    background-color: lightgrey; /* Fondo gris claro */
+    border-radius: 5px; /* Bordes redondeados */
 }

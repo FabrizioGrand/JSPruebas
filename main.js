@@ -73,9 +73,26 @@ function calculateVATForList() {
     displayResult(results.join('<br>'));
 }
 
-// Función para mostrar los resultados
+// Función para mostrar los resultados y guardarlos en localStorage
 function displayResult(message) {
     resultDiv.innerHTML = message; // Mostrar el mensaje en el div de resultado
     console.log(message); // Mostrar el mensaje en la consola
     alert(message); // Mostrar el mensaje en una alerta
+
+    // Guardar el resultado en localStorage
+    let savedResults = JSON.parse(localStorage.getItem('savedResults')) || [];
+    savedResults.push(message);
+    localStorage.setItem('savedResults', JSON.stringify(savedResults));
+}
+
+// Función para mostrar los resultados guardados
+function showSavedResults() {
+    let savedResults = JSON.parse(localStorage.getItem('savedResults')) || [];
+    
+    if (savedResults.length === 0) {
+        alert("No hay resultados guardados."); // Mostrar alerta si no hay resultados guardados
+    } else {
+        const savedResultsDiv = document.getElementById('savedResults');
+        savedResultsDiv.innerHTML = savedResults.join('<br>'); // Mostrar los resultados guardados
+    }
 }
