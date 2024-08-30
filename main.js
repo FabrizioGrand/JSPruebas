@@ -83,9 +83,28 @@ function saveResult(operation, result) {
     const newResult = document.createElement('div');
     newResult.textContent = `${operation} = ${result}`;
     savedResultsDiv.appendChild(newResult);
+
+    // Guardar en localStorage
+    let savedResults = JSON.parse(localStorage.getItem('savedResults')) || [];
+    savedResults.push({ operation, result });
+    localStorage.setItem('savedResults', JSON.stringify(savedResults));
 }
 
 function toggleSavedResults() {
     const savedResultsDiv = document.getElementById('savedResults');
     savedResultsDiv.style.display = savedResultsDiv.style.display === 'none' ? 'block' : 'none';
+    if (savedResultsDiv.style.display === 'block') {
+        loadSavedResults();
+    }
+}
+
+function loadSavedResults() {
+    const savedResultsDiv = document.getElementById('savedResults');
+    savedResultsDiv.innerHTML = '';
+    let savedResults = JSON.parse(localStorage.getItem('savedResults')) || [];
+    savedResults.forEach(result => {
+        const resultDiv = document.createElement('div');
+        resultDiv.textContent = `${result.operation} = ${result.result}`;
+        savedResultsDiv.appendChild(resultDiv);
+    });
 }
