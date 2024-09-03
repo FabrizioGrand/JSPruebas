@@ -56,25 +56,26 @@ button {
     background-color: blueviolet;
     color: white;
     font-weight: bold;
+    border: none;
+    border-radius: 4px;
 }
 
-/* Estilos para el contenedor de resultados guardados */
+button:hover {
+    background-color: mediumslateblue;
+}
+
+/* Contenedor de resultados anteriores */
 #savedResultsContainer {
-    background-color: pink;
-    padding: 20px;
-    border-radius: 8px;
     margin-top: 20px;
     width: 100%;
-    max-width: 800px;
-}
-
-#savedResultsContainer h2 {
     text-align: center;
-    color: rgba(0, 0, 0, 0.85);
 }
 
+/* Estilos para la lista de resultados */
 #savedResults {
-    font-weight: bold;
-    text-align: center;
-    margin-top: 15px;
+    margin-top: 10px;
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
 }
