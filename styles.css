@@ -67,8 +67,10 @@ button:hover {
 /* Contenedor de resultados anteriores */
 #savedResultsContainer {
     margin-top: 20px;
-    width: 100%;
+    width: 40%;
     text-align: center;
+    background-color: pink;
+    border-radius: 1.5rem;
 }
 
 /* Estilos para la lista de resultados */
@@ -78,4 +80,11 @@ button:hover {
     padding: 10px;
     border-radius: 8px;
     text-align: left;
+}
+
+#toggleSavedResultsBtn{
+    margin-bottom: .5rem;
+    width: 40%;
+    height: auto;
+    font-weight: bold;
 }
