@@ -1,0 +1,26 @@
+# Calculadora Interactiva
+
+## Descripción
+Este proyecto es una calculadora interactiva que permite realizar operaciones matemáticas básicas como suma, resta, multiplicación y división, calcular porcentajes e IVA, y guardar resultados en `localStorage` para acceder a ellos posteriormente.
+
+### Funcionalidades
+1. **Operaciones Matemáticas**: Puedes realizar operaciones básicas entre dos números.
+2. **Cálculo de Porcentajes**: Calcula el porcentaje de un número.
+3. **Cálculo de IVA**: Permite calcular el IVA sobre un importe o una lista de precios.
+4. **Guardado de Resultados**: Los resultados se guardan en `localStorage` y pueden ser visualizados.
+5. **Interfaz Dinámica**: La interfaz se actualiza dinámicamente usando JavaScript, sin uso de prompts o alerts nativos.
+
+### Estructura del Proyecto
+- `index.html`: Página principal.
+- `styles.css`: Estilos para la interfaz.
+- `main.js`: Funcionalidades principales.
+- `data.json`: Archivo JSON que simula una base de datos.
+- `assets/`: Carpeta con recursos multimedia.
+
+### Librerías
+Este proyecto utiliza la librería **SweetAlert2** para mostrar mensajes amigables en lugar de `alert()`.
+
+### Instrucciones de uso
+1. Abre el archivo `index.html` en un navegador.
+2. Usa los botones para realizar cálculos.
+3. Visualiza los resultados guardados.

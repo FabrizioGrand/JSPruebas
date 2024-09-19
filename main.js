@@ -1,14 +1,7 @@
-// Funciones de cálculo
-function calculate(operation) {
-    const num1 = parseFloat(document.getElementById('num1').value);
-    const num2 = parseFloat(document.getElementById('num2').value);
+// Simular cálculo básico (sin prompt ni alert)
+function calculate(operation, num1, num2) {
     let result;
     let operationText;
-
-    if (isNaN(num1) || isNaN(num2)) {
-        displayResult('Por favor, ingrese números válidos.');
-        return;
-    }
 
     switch (operation) {
         case 'add':
@@ -25,7 +18,7 @@ function calculate(operation) {
             break;
         case 'divide':
             if (num2 === 0) {
-                displayResult('No se puede dividir por cero.');
+                showMessage('Error', 'No se puede dividir por cero.');
                 return;
             }
             result = num1 / num2;
@@ -33,94 +26,104 @@ function calculate(operation) {
             break;
     }
 
-    displayResult(`El resultado fue: ${result}`);
+    showMessage('Resultado', `El resultado fue: ${result}`);
     saveResult(operationText, result);
 }
 
+// Mostrar un modal con el resultado en vez de alert
+function showMessage(title, message) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.innerHTML = `
+        <div class="modal-content">
+            <h3>${title}</h3>
+            <p>${message}</p>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    modal.remove();
+}
+
+// Cálculo de porcentaje
 function calculatePercentage() {
     const number = parseFloat(document.getElementById('number').value);
     const percentage = parseFloat(document.getElementById('percentage').value);
 
     if (isNaN(number) || isNaN(percentage)) {
-        displayResult('Por favor, ingrese números válidos.');
+        showMessage('Error', 'Por favor, ingrese números válidos.');
         return;
     }
 
     const result = (number * percentage) / 100;
-    displayResult(`El resultado fue: ${result}`);
+    showMessage('Resultado', `${percentage}% de ${number} = ${result}`);
     saveResult(`${percentage}% de ${number}`, result);
 }
 
+// Cálculo de IVA
 function calculateVAT() {
     const amount = parseFloat(document.getElementById('amount').value);
     const vatRate = parseFloat(document.getElementById('vatRate').value);
 
     if (isNaN(amount) || isNaN(vatRate)) {
-        displayResult('Por favor, ingrese números válidos.');
+        showMessage('Error', 'Por favor, ingrese números válidos.');
         return;
     }
 
     const result = amount + (amount * vatRate) / 100;
-    displayResult(`El resultado fue: ${result}`);
+    showMessage('Resultado', `IVA de ${vatRate}% sobre ${amount} = ${result}`);
     saveResult(`IVA de ${vatRate}% sobre ${amount}`, result);
 }
 
+// Cálculo de IVA para lista
 function calculateVATForList() {
     const prices = document.getElementById('prices').value.split(',').map(parseFloat);
-    const vatRateList = parseFloat(document.getElementById('vatRateList').value);
+    const vatRate = parseFloat(document.getElementById('vatRateList').value);
 
-    if (prices.some(isNaN) || isNaN(vatRateList)) {
-        displayResult('Por favor, ingrese números válidos.');
+    if (prices.some(isNaN) || isNaN(vatRate)) {
+        showMessage('Error', 'Por favor, ingrese números válidos.');
         return;
     }
 
-    const results = prices.map(price => price + (price * vatRateList) / 100);
-    displayResult(`El resultado fue: ${results.join(', ')}`);
-    saveResult(`IVA de ${vatRateList}% sobre lista`, results.join(', '));
+    const results = prices.map(price => price + (price * vatRate) / 100);
+    const resultString = results.join(', ');
+    showMessage('Resultado', `IVA de ${vatRate}% sobre la lista: ${resultString}`);
+    saveResult(`IVA de ${vatRate}% sobre la lista:`, resultString);
 }
 
 // Guardar resultados en localStorage
 function saveResult(operation, result) {
-    const savedResults = JSON.parse(localStorage.getItem('results')) || [];
-    savedResults.push(`${operation} = ${result}`);
-    localStorage.setItem('results', JSON.stringify(savedResults));
-    updateSavedResults();
+    const results = JSON.parse(localStorage.getItem('savedResults')) || [];
+    results.push({ operation, result });
+    localStorage.setItem('savedResults', JSON.stringify(results));
+    renderSavedResults();
 }
 
-function updateSavedResults() {
-    const savedResults = JSON.parse(localStorage.getItem('results')) || [];
+// Mostrar/ocultar resultados guardados
+function toggleSavedResults() {
+    const container = document.getElementById('savedResultsContainer');
+    container.style.display = container.style.display === 'none' ? 'block' : 'none';
+}
+
+// Renderizar los resultados guardados en la pantalla
+function renderSavedResults() {
+    const results = JSON.parse(localStorage.getItem('savedResults')) || [];
     const savedResultsDiv = document.getElementById('savedResults');
     savedResultsDiv.innerHTML = '';
-    savedResults.forEach(result => {
+
+    results.forEach(result => {
         const resultDiv = document.createElement('div');
-        resultDiv.textContent = result;
+        resultDiv.innerHTML = `<strong>Operación:</strong> ${result.operation}, <strong>Resultado:</strong> ${result.result}`;
         savedResultsDiv.appendChild(resultDiv);
     });
 }
 
-// Mostrar resultados guardados
-function toggleSavedResults() {
-    const savedResultsDiv = document.getElementById('savedResults');
-    savedResultsDiv.style.display = savedResultsDiv.style.display === 'none' ? 'block' : 'none';
-}
-
-// Mostrar el resultado en la página en vez de usar alert
-function displayResult(message) {
-    const savedResultsDiv = document.getElementById('savedResults');
-    const resultDiv = document.createElement('div');
-    resultDiv.textContent = message;
-    savedResultsDiv.appendChild(resultDiv);
-}
-
-// Manejar eventos de los botones
-document.getElementById('addBtn').addEventListener('click', () => calculate('add'));
-document.getElementById('subtractBtn').addEventListener('click', () => calculate('subtract'));
-document.getElementById('multiplyBtn').addEventListener('click', () => calculate('multiply'));
-document.getElementById('divideBtn').addEventListener('click', () => calculate('divide'));
-document.getElementById('percentageBtn').addEventListener('click', calculatePercentage);
-document.getElementById('vatBtn').addEventListener('click', calculateVAT);
-document.getElementById('vatListBtn').addEventListener('click', calculateVATForList);
-document.getElementById('toggleSavedResultsBtn').addEventListener('click', toggleSavedResults);
-
-// Actualizar resultados guardados al cargar la página
-updateSavedResults();
+// Inicializar al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderSavedResults();
+    document.getElementById('savedResultsContainer').style.display = 'none';
+});
